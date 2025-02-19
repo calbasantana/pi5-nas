@@ -67,6 +67,46 @@ From OpenMediaVault (https://github.com/OpenMediaVault-Plugin-Developers/install
 ```bash
 sudo wget -O - https://github.com/OpenMediaVault-Plugin-Developers/installScript/raw/master/install | sudo bash
 ```
+![image](https://github.com/user-attachments/assets/35d97064-c0bc-4ed0-aa6d-d406d35acd8d)
+
+It should take a few minutes to run. Then, it will reboot your pi and terminate the SSH session. You will likely see this:
+
+![image](https://github.com/user-attachments/assets/98f30194-a1fc-45e9-9353-c577c3df27ef)
+
+The IP has likely changed, so use Angry IP Scanner again to find it and then reconnect.
+
+# Enabling PCIe Port on Pi
+
+One of the last things we need to do is to enable the PCIe port on the pi. Run the following command:
+
+```bash
+sudo nano /boot/firmware/config.txt 
+```
+
+![image](https://github.com/user-attachments/assets/dca230d7-e6c9-4064-a86a-09026a451990)
+
+And then add the following set of lines above [cm4]:
+
+```bash
+# Enable PCIe Port and Set to Gen 3 Speed
+dtparam=pciex1
+dtparam=pciex1_gen=3
+```
+![image](https://github.com/user-attachments/assets/a417d217-d6ec-4f4d-a32f-49b77a9217bd)
+
+Press Ctrl+X, then Y, then Enter. Now, reboot the pi.
+
+# Logging in and Connecting
+
+We should now be able to access the Pi remotely by entering its IP address into our browser. Do another scan using the Angry IP Scanner and then copy the IP from it and paste it into your browser.
+
+![image](https://github.com/user-attachments/assets/12f805e0-34f1-47e6-a635-dd25de121e51)
+
+
+Add the two lines below:
+
+
+
 
 Make sure to first attach the active cooler to the Pi 5, then the HAT and then the SSD(s).
 
