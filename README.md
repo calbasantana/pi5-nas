@@ -15,11 +15,59 @@ Raspberry Pi 5 Penta SATA HAT - Up to 5X SATA Disks HAT - this can be purchased 
 
 Crucial BX500 1TB 3D NAND SATA 2.5-Inch Internal SSD, up to 540MB/s - CT1000BX500SSD1, Solid State Drive - this can be purchased for $58.59 at the following link: https://www.amazon.com/Crucial-BX500-NAND-2-5-Inch-Internal/dp/B07YD579WM/ref=sr_1_3?crid=3SGVHSACN4BDU&dib=eyJ2IjoiMSJ9.Ye3VHf0Z0RC7v-rUDvfl2huASmBBKDUvucLkc6D9cTNbg-YhPmtybPI2nNl0Bg8rbi-qfKzi1i8YJ_q_uUlhfOcr9j7KOGBk6pPRbcqS2jlpEvKtA3Y9CpnwiHBGpY_4N-k3v_ImSGun1AUisn9HAXiCfH77rSURcao2vGu94ud5_2vCTQrW5b2AqQt5s4yYWL5t9M6mgfbjFo2qwSc6rhmR3ug0CANcFnlceByL8DY.8dYIwhZbAhoE6yABZrDH6tmMOFcGhd1H6k-tInrGKVs&dib_tag=se&keywords=2.5%22%2Bssd&qid=1736360605&sprefix=2.5%2Bssd%2Caps%2C94&sr=8-3&th=1
 
-The Penta SATA HAT can fit 4 of the 2.5-inch SSDs, but I decided to just go with one for now because I want to test the system and make sure everything works before fully committing to 4. In any case, this project can cost somewhere between $253.56 and $429.33, which is cheaper than what most ready-made NAS cost.
+12V 3A AC Adapter Power Supply Charger [12 Volts 3 Amps Regulated Switching Power] with 11 Interchangeable DC Plug for 500mA 600mA 700mA 800mA 900mA 1000mA 1500mA 2000mA 2500mA 3000mA Equipment - this can be purchased for $14.99 at the following link: https://www.amazon.com/Adapter-Regulated-Switching-Interchangeable-Equipment/dp/B0BFPZ81B6?crid=32ALOG36NGP3P&dib=eyJ2IjoiMSJ9.Ev9obzVE7BHhlHQASM4eNe7--XA4ahA_OVUaUhmTI1gbqu59GYxwhAVR9d9qWN8fBHGSQdPBdzeWE5mp8CHt-PlMGNAtzV2AMFGNS9kRyztxqRd4WeUglt4zDSZGpc-8NN6zrlFWEDfjqlvV-B0A9JOknrWgo_aUvkmimv9u4WW8sEVuy3dMBNG4Idbiiji_CoL1R4tOpiYC4cQTcqGzHN5CsO4qrqvnRw1t2jBnlwY.8rqIiN6gOG8LqL7y19-_DsnVLC7ubIedKi-omXC9LRE&dib_tag=se&keywords=12v+3a+power+supply&qid=1715556783&sprefix=12v+3a+power+supp,aps,278&sr=8-2-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1&linkCode=sl1&tag=mklements-20&linkId=359116530adc81165887e3a376eb49b2&language=en_US&ref_=as_li_ss_tl
+ 
+The Penta SATA HAT can fit 4 of the 2.5-inch SSDs, but I decided to just go with one for now because I want to test the system and make sure everything works before fully committing to 4. In any case, this project can cost somewhere between $268.55 and $444.32, which is cheaper than what most ready-made NAS cost.
 
 IMAGE
 
 # Assembly
+
+The first step in assembling is attaching the active cooler to the Pi 5. Do so as shown below.
+
+However, the SATA HAT needs some space, so use a pair of needle-nose plyers to remove the bottom left three pins on the active cooler. It should look like the image below.
+
+Now, use the included offset stands to provide support for the SATA HAT. Make sure to plug in your active cooler in the top right part of the image below as well.
+
+Now, screw your SATA HAT on top like so:
+
+The last step is adding the SSD. Add as many as you bought (for me, it's just one for now). Below is what mine looks like.
+
+# Preparing the Software
+
+Take the included microSD card and, using Pi Imager, upload Pi OS Lite. However, at the following screen, select "Edit Settings"
+
+![image](https://github.com/user-attachments/assets/e223f0d8-d374-45e6-a49c-1bd9f5139a29)
+
+Here, go to General and set a username and password as well as a hostname. Then, set Enable SSH under Services.
+
+![image](https://github.com/user-attachments/assets/0374fe5b-52f8-427c-b18d-f47a166ffc3c)
+
+Now, press save then "yes" for the following screens.
+
+
+# First Boot
+
+Once the OS is done, insert it into you Pi 5 and connect the Pi 5 to Ethernet and power it through the 12V power supply. Wait a few minutes for the Pi to boot up.
+
+Use something like Angry IP Scanner (https://angryip.org/download/#linux) to find the IP address of the Pi5nas.
+
+![image](https://github.com/user-attachments/assets/ac21522f-557e-4834-b93e-b33ae49dee5f)
+
+Once you have done this, you can SSH into the Pi using the IP address. I decided to use termius on linux as my SSH tool. I copied my pi5nas's IP into the IP or Hostname then created a host.
+
+![image](https://github.com/user-attachments/assets/1549309d-483c-4186-8e45-db3b3559597d)
+
+I then logged in using the username and password I created previously for the pi5nas.
+
+![image](https://github.com/user-attachments/assets/d41c717b-8c29-4322-a08b-a82600f06fd6)
+
+From OpenMediaVault (https://github.com/OpenMediaVault-Plugin-Developers/installScript), I ran this line:
+
+```bash
+sudo wget -O - https://github.com/OpenMediaVault-Plugin-Developers/installScript/raw/master/install | sudo bash
+```
+
 Make sure to first attach the active cooler to the Pi 5, then the HAT and then the SSD(s).
 
 IMAGE
