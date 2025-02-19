@@ -1,7 +1,7 @@
 IMAGE
 
 # Introduction
-I've been wanting to store some of my raw photos from astrophotography onto my computer, but I was getting worried about my overall storage. For this reason, I decided to embark on a project to create a NAS - network-attached storage - based on the Pi 5 system. This proved to be much harder than I initially thought it was going to be, but let's get to it.
+I've been wanting to store some of my raw photos from astrophotography onto my computer, but I was getting worried about my overall storage. For this reason, I decided to embark on a project to create a NAS - network-attached storage - based on the Pi 5 system. This proved to be much harder than I initially thought it was going to be, but let's get to it. I followed this guide to help me out: https://www.the-diy-life.com/i-built-a-4-bay-raspberry-pi-5-based-nas/
 
 # Material(s)
 
@@ -18,8 +18,6 @@ Crucial BX500 1TB 3D NAND SATA 2.5-Inch Internal SSD, up to 540MB/s - CT1000BX50
 12V 3A AC Adapter Power Supply Charger [12 Volts 3 Amps Regulated Switching Power] with 11 Interchangeable DC Plug for 500mA 600mA 700mA 800mA 900mA 1000mA 1500mA 2000mA 2500mA 3000mA Equipment - this can be purchased for $14.99 at the following link: https://www.amazon.com/Adapter-Regulated-Switching-Interchangeable-Equipment/dp/B0BFPZ81B6?crid=32ALOG36NGP3P&dib=eyJ2IjoiMSJ9.Ev9obzVE7BHhlHQASM4eNe7--XA4ahA_OVUaUhmTI1gbqu59GYxwhAVR9d9qWN8fBHGSQdPBdzeWE5mp8CHt-PlMGNAtzV2AMFGNS9kRyztxqRd4WeUglt4zDSZGpc-8NN6zrlFWEDfjqlvV-B0A9JOknrWgo_aUvkmimv9u4WW8sEVuy3dMBNG4Idbiiji_CoL1R4tOpiYC4cQTcqGzHN5CsO4qrqvnRw1t2jBnlwY.8rqIiN6gOG8LqL7y19-_DsnVLC7ubIedKi-omXC9LRE&dib_tag=se&keywords=12v+3a+power+supply&qid=1715556783&sprefix=12v+3a+power+supp,aps,278&sr=8-2-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1&linkCode=sl1&tag=mklements-20&linkId=359116530adc81165887e3a376eb49b2&language=en_US&ref_=as_li_ss_tl
  
 The Penta SATA HAT can fit 4 of the 2.5-inch SSDs, but I decided to just go with one for now because I want to test the system and make sure everything works before fully committing to 4. In any case, this project can cost somewhere between $268.55 and $444.32, which is cheaper than what most ready-made NAS cost.
-
-IMAGE
 
 # Assembly
 
@@ -67,6 +65,7 @@ From OpenMediaVault (https://github.com/OpenMediaVault-Plugin-Developers/install
 ```bash
 sudo wget -O - https://github.com/OpenMediaVault-Plugin-Developers/installScript/raw/master/install | sudo bash
 ```
+
 ![image](https://github.com/user-attachments/assets/35d97064-c0bc-4ed0-aa6d-d406d35acd8d)
 
 It should take a few minutes to run. Then, it will reboot your pi and terminate the SSH session. You will likely see this:
@@ -92,6 +91,7 @@ And then add the following set of lines above [cm4]:
 dtparam=pciex1
 dtparam=pciex1_gen=3
 ```
+
 ![image](https://github.com/user-attachments/assets/a417d217-d6ec-4f4d-a32f-49b77a9217bd)
 
 Press Ctrl+X, then Y, then Enter. Now, reboot the pi.
@@ -102,27 +102,10 @@ We should now be able to access the Pi remotely by entering its IP address into 
 
 ![image](https://github.com/user-attachments/assets/12f805e0-34f1-47e6-a635-dd25de121e51)
 
+The default username is admin and default password is openmediavault. You should change your password after logging in. You should also update your system.
 
-Add the two lines below:
-
-
-
-
-Make sure to first attach the active cooler to the Pi 5, then the HAT and then the SSD(s).
-
-IMAGE
-# Software Installation
-For software installation, I relied on the following guide: https://www.the-diy-life.com/i-built-a-4-bay-raspberry-pi-5-based-nas/
-## Installing Pi OS
-For this part, insert the microSD card into your computer and use Pi Imager to install Pi OS; make sure to enable SSH so that we can log into the Pi remotely. After doing so, insert the microSD card into the Pi 5.
-
-IMAGE
-## Software Setup
-Plug in power and ethernet so the Pi 5 has access to the Internet. Give it a few minutes to boot.
-
+Then, go to Services -> SMB/CIFS and select Enabled.
 
 # Tips
 
-The sensor may sometimes give readings that are way off. This is because of how sound-based sensors work. Essentially, one part of the sensor sends out a sound wave, which bounces back and is then incident on the other part of the sensor. Since the speed of sound in air is well-known, this value, alongside the time in between sending the sound wave and receiving it, is used to determine distance between sensor and source. This does pose issues if the source of the sound moves (so if you move your hand too much while holding the sensor) or if the angle is tilted from the survey or if the target surface has grooves that diffuse sound waves in an odd pattern. These are all things to keep in mind and a good reason for why people often opt for light-based distance sensors instead.
-
-I believe the sensor I used here is rated for about 2 meters of accuracy, but realistically, I wouldn't put it past 1 meter here.
+I would recommend probably creating a better cooling solution, probably similar to the one from the guide I followed; however, I only wanted one SSD for right now.
