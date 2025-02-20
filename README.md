@@ -1,4 +1,4 @@
-IMAGE
+![PXL_20250220_183435246](https://github.com/user-attachments/assets/b34cade0-82b3-4d29-89b0-fb2c501141b5)
 
 # Introduction
 I've been wanting to store some of my raw photos from astrophotography onto my computer, but I was getting worried about my overall storage. For this reason, I decided to embark on a project to create a NAS - network-attached storage - based on the Pi 5 system. This proved to be much harder than I initially thought it was going to be, but let's get to it. I followed this guide to help me out: https://www.the-diy-life.com/i-built-a-4-bay-raspberry-pi-5-based-nas/
@@ -23,13 +23,27 @@ The Penta SATA HAT can fit 4 of the 2.5-inch SSDs, but I decided to just go with
 
 The first step in assembling is attaching the active cooler to the Pi 5. Do so as shown below.
 
+![PXL_20250219_141949804](https://github.com/user-attachments/assets/1dd3d87d-2778-4192-838a-bcb5e07a1cfc)
+
 However, the SATA HAT needs some space, so use a pair of needle-nose plyers to remove the bottom left three pins on the active cooler. It should look like the image below.
+
+![PXL_20250219_142701262](https://github.com/user-attachments/assets/d86cbaaf-e19e-4fba-b0fe-0fde5e558192)
 
 Now, use the included offset stands to provide support for the SATA HAT. Make sure to plug in your active cooler in the top right part of the image below as well.
 
+![PXL_20250219_143057575](https://github.com/user-attachments/assets/e439a2cc-6bc3-4a13-9b27-b1693b2f4d18)
+
+Now, connect your SATA HAT's FPC cable as shown below.
+
+![PXL_20250220_183057607](https://github.com/user-attachments/assets/d97b014d-c775-41c1-822c-11b6c12dc6b7)
+
 Now, screw your SATA HAT on top like so:
 
+![PXL_20250220_183330314](https://github.com/user-attachments/assets/33681d43-1261-4c2f-ad5e-04ade8bc85ee)
+
 The last step is adding the SSD. Add as many as you bought (for me, it's just one for now). Below is what mine looks like.
+
+![PXL_20250220_183354011](https://github.com/user-attachments/assets/a149d74b-c6f0-4f36-8120-ae8bde1354aa)
 
 # Preparing the Software
 
@@ -104,7 +118,8 @@ We should now be able to access the Pi remotely by entering its IP address into 
 
 The default username is admin and default password is openmediavault. You should change your password after logging in. You should also update your system.
 
-Then, go to Services -> SMB/CIFS and select Enabled.
+Then, go tStorage
+Then, go to Services -> SMB/CIFS -> Settings and select Enabled for the Workgroup and below Home directories.
 
 # Tips
 
