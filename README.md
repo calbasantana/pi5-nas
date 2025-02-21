@@ -130,9 +130,25 @@ In the next screen, select the formatted volume and save again and then apply.
 
 ![image](https://github.com/user-attachments/assets/c4961dac-4d11-49f1-83ec-55a95494f8f9)
 
-Now go to Shared Folders and select create. Name your folder and then click save.
+Now go to Shared Folders and select create. Name your folder, select the file system, and then click save.
+
+![image](https://github.com/user-attachments/assets/64cae47c-7ab7-4e65-bbf0-d95d3cb5d4ea)
 
 In the next screen, click apply.
+
+# Crucial Services
+
+To make sure that this NAS is viewable to Linux and MacOS machines, go over to Services then click on NFS followed by Settings. Select Enabled.
+
+![image](https://github.com/user-attachments/assets/a941eeba-13e1-49fc-948d-4bd815012d6c)
+
+Now, select save and then apply.
+
+To make sure that this NAS is also viewable to Windows machines, click on SMB/CIFS, Settings, and then Enabled for Workgroup.
+
+Hit save and apply in the subsequent screen.
+
+![image](https://github.com/user-attachments/assets/28a07681-79ca-42ab-9336-268c853986f4)
 
 We must now go over to Services then SMB/CIFS. Here, select Settings then Enabled for Workgroup. Hit save at the bottom and apply when available.
 
