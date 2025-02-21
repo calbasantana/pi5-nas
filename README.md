@@ -120,6 +120,25 @@ The default username is admin and default password is openmediavault. You should
 
 Then, go Storage -> Disks. Here, you should see your mounted disks.
 
+![image](https://github.com/user-attachments/assets/44eb4b20-17e1-4135-96b4-e8bff13b1d52)
+
+Now, go over to File Systems and select the create option. Select the BTRFS option and set the Profile as "Single" and select the SATA Disk then save.
+
+![image](https://github.com/user-attachments/assets/a17248e5-cc2e-4c93-9158-216be5ea1ecc)
+
+In the next screen, select the formatted volume and save again and then apply.
+
+![image](https://github.com/user-attachments/assets/c4961dac-4d11-49f1-83ec-55a95494f8f9)
+
+Now go to Shared Folders and select create. Name your folder and then click save.
+
+In the next screen, click apply.
+
+We must now go over to Services then SMB/CIFS. Here, select Settings then Enabled for Workgroup. Hit save at the bottom and apply when available.
+
+Go over to "Shares" and then create a new share. Here, select the folder just created earlier and click save right after and apply.
+
+![image](https://github.com/user-attachments/assets/bfe781f5-935c-4584-8108-efa999df40ce)
 
 
 Then, go to Services -> SMB/CIFS -> Settings and select Enabled for the Workgroup and below Home directories.
