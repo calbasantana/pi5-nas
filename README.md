@@ -90,7 +90,7 @@ The IP has likely changed, so use Angry IP Scanner again to find it and then rec
 
 # Enabling PCIe Port on Pi
 
-One of the last things we need to do is to enable the PCIe port on the pi. Run the following command:
+One of the next things we need to do is to enable the PCIe port on the pi. Run the following command:
 
 ```bash
 sudo nano /boot/firmware/config.txt 
@@ -110,7 +110,7 @@ dtparam=pciex1_gen=3
 
 Press Ctrl+X, then Y, then Enter. Now, reboot the pi.
 
-# Logging in and Connecting
+# Using OMV - Setting It Up
 
 We should now be able to access the Pi remotely by entering its IP address into our browser. Do another scan using the Angry IP Scanner and then copy the IP from it and paste it into your browser.
 
@@ -136,7 +136,7 @@ Now go to Shared Folders and select create. Name your folder, select the file sy
 
 In the next screen, click apply.
 
-# Crucial Services
+# Setting Up for Linux and MacOS (Option 1)
 
 To make sure that this NAS is viewable to Linux and MacOS machines, go over to Services then click on NFS followed by Settings. Select Enabled.
 
@@ -146,24 +146,51 @@ Now, select save and then apply.
 
 Then, go over to Shares under NFS and select create. Select the previous folder and provide read/write permission. For the client, use 192.168.1.0/24 like so:
 
-![image](https://github.com/user-attachments/assets/c6b7f383-b61e-4bde-b1df-2c96f4306e1b)
+![image](https://github.com/user-attachments/assets/2f298350-4dfb-4d50-b8bc-6aa0f8d1b94c)
 
 Click save and then apply when available.
 
-To make sure that this NAS is also viewable to Windows machines, click on SMB/CIFS, Settings, and then Enabled for Workgroup.
+# Setting Up for Windows (Option 2)
 
-Hit save and apply in the subsequent screen.
+To make sure that this NAS is viewable to Windows machines, click on SMB/CIFS, Settings, and then Enabled for Workgroup.
 
 ![image](https://github.com/user-attachments/assets/28a07681-79ca-42ab-9336-268c853986f4)
 
-We must now go over to Services then SMB/CIFS. Here, select Settings then Enabled for Workgroup. Hit save at the bottom and apply when available.
+Hit save and apply in the subsequent screen.
 
-Go over to "Shares" and then create a new share. Here, select the folder just created earlier and click save right after and apply.
+Now, go over to "Shares" and then create a new share. Here, select the folder just created earlier and click save right after and apply.
 
 ![image](https://github.com/user-attachments/assets/bfe781f5-935c-4584-8108-efa999df40ce)
 
+# Creating NAS User
 
-Then, go to Services -> SMB/CIFS -> Settings and select Enabled for the Workgroup and below Home directories.
+We need to create a user with which to log into the NAS. Go over to "Users" then "Users" and click create. Create your user with a password and then make sure they are added to the users group.
+
+![image](https://github.com/user-attachments/assets/c7759246-df38-42ff-84f0-8e1dd0101b84)
+
+## Connecting to Server (Linux)
+
+To connect on Linux, go to File System and then type this into the connect to server option: smb://192.168.4.192. It should look like this (on ZorinOS at least):
+
+![image](https://github.com/user-attachments/assets/774e09f3-0fe0-4be0-8628-b44ab5123a95)
+
+And then you will see:
+
+![image](https://github.com/user-attachments/assets/a8622682-a1d7-4481-97ee-4cfd093077bd)
+
+You can enter your credentials to access the folder:
+
+![image](https://github.com/user-attachments/assets/bd28c393-b67d-40e9-bc27-1e4db38a60d1)
+
+And when you do, here's what you'll be able to see:
+
+![image](https://github.com/user-attachments/assets/b9aaaafa-4ffc-4468-8740-488502e934bd)
+
+## Connecting to Server (MacOS & Windows)
+
+To connect on mac, type in smb://[IP ADDRESS] under connect to server. For example, smb://192.168.4.192. You will be prompted to select connect one more time and then likely asked for user and password.
+
+For Windows, go to File Explorer and in the top part type \\[IP ADDRESS] (\\192.168.4.192, for example) - you should see the PiNAS1 folder now and can enter credentials.
 
 # Tips
 
