@@ -144,6 +144,12 @@ To make sure that this NAS is viewable to Linux and MacOS machines, go over to S
 
 Now, select save and then apply.
 
+Then, go over to Shares under NFS and select create. Select the previous folder and provide read/write permission. For the client, use 192.168.1.0/24 like so:
+
+![image](https://github.com/user-attachments/assets/c6b7f383-b61e-4bde-b1df-2c96f4306e1b)
+
+Click save and then apply when available.
+
 To make sure that this NAS is also viewable to Windows machines, click on SMB/CIFS, Settings, and then Enabled for Workgroup.
 
 Hit save and apply in the subsequent screen.
