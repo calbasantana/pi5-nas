@@ -118,7 +118,10 @@ We should now be able to access the Pi remotely by entering its IP address into 
 
 The default username is admin and default password is openmediavault. You should change your password after logging in. You should also update your system.
 
-Then, go tStorage
+Then, go Storage -> Disks. Here, you should see your mounted disks.
+
+
+
 Then, go to Services -> SMB/CIFS -> Settings and select Enabled for the Workgroup and below Home directories.
 
 # Tips
