@@ -217,17 +217,17 @@ sudo nano /etc/fstab
 ```
 7. Add this line:
 ```bash
-//servername/sharename /media/windowsshare cifs credentials=/home/ubuntuusername/.smbcredentials 0 0
+//servername/sharename /media/windowsshare cifs uid=ubuntuusername,credentials=/home/ubuntuusername/.smbcredentials 0 0
 ```
 
 For me this would look like:
-//192.168.4.192/PiNAS1 /mnt/pinas1 cifs credentials=/home/chris/.smbcredentials 0 0
+//192.168.4.192/PiNAS1 /mnt/pinas1 cifs uid=chris,credentials=/home/chris/.smbcredentials 0 0
 
 8. Save and then run:
 ```bash
 sudo mount /mnt/pinas1
 ```
-9. 
+9. Then, go over to "Other Locations" -> "Computer" -> mnt and then add the folder as a bookmark.
 
 ## Connecting to Server (MacOS & Windows)
 
