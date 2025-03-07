@@ -186,6 +186,49 @@ And when you do, here's what you'll be able to see:
 
 ![image](https://github.com/user-attachments/assets/b9aaaafa-4ffc-4468-8740-488502e934bd)
 
+### Automounting on Start
+
+To make sure that your NAS is always mounted at boot, please follow the steps below (courtesy of https://documentation.ubuntu.com/server/how-to/samba/mount-cifs-shares-permanently/index.html)
+
+1. Install cifs-utils using your package manager. For Debian-based distributions, this is done by writing the following in a terminal instance:
+```bash
+sudo apt install cifs-utils
+```
+2. Make a mountpoint
+```bash
+sudo mkdir /mnt/pinas1
+```
+3. Create a credentials file
+```bash
+gedit ~/.smbcredentials
+```
+4. In this file, add your credentials:
+```bash
+username=msusername
+password=mspassword
+```
+5. Change permissions of the file to prevent unwanted access to credentials:
+```bash
+chmod 600 ~/.smbcredentials
+```
+6. Edit your /etc/fstab file (with root privileges):
+```bash
+sudo nano /etc/fstab
+```
+7. Add this line:
+```bash
+//servername/sharename /media/windowsshare cifs credentials=/home/ubuntuusername/.smbcredentials 0 0
+```
+
+For me this would look like:
+//192.168.4.192/PiNAS1 /mnt/pinas1 cifs credentials=/home/chris/.smbcredentials 0 0
+
+8. Save and then run:
+```bash
+sudo mount /mnt/pinas1
+```
+9. 
+
 ## Connecting to Server (MacOS & Windows)
 
 To connect on mac, type in smb://[IP ADDRESS] under connect to server. For example, smb://192.168.4.192. You will be prompted to select connect one more time and then likely asked for user and password.
