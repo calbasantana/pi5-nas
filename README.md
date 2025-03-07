@@ -186,7 +186,7 @@ And when you do, here's what you'll be able to see:
 
 ![image](https://github.com/user-attachments/assets/b9aaaafa-4ffc-4468-8740-488502e934bd)
 
-### Automounting on Start
+### Automounting on Boot
 
 To make sure that your NAS is always mounted at boot, please follow the steps below (courtesy of https://documentation.ubuntu.com/server/how-to/samba/mount-cifs-shares-permanently/index.html)
 
@@ -228,6 +228,8 @@ For me this would look like:
 sudo mount /mnt/pinas1
 ```
 9. Then, go over to "Other Locations" -> "Computer" -> mnt and then add the folder as a bookmark.
+
+10. Restart your computer or logout/login and you should be automatically connected to the shared folder with access to edit files within it.
 
 ## Connecting to Server (MacOS & Windows)
 
